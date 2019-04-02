@@ -1,0 +1,192 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>Week 2-Calculator</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.css">
+		<script src="jquery/demos/js/jquery.js"></script> 
+		<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+		<script>
+			
+
+			$(document).ready(function(){
+				document.getElementById("ddlopt").addEventListener("focus", myFocusFunction,true);
+				function myFocusFunction(){
+					document.getElementById("note1").innerHTML = "<b>Consider the following 4 operations in the drop down: +, -, /, * from the dropdown</b>";
+					}
+					document.getElementById("ddlopt").addEventListener("blur", myFocusFunction2,true);
+				function myFocusFunction2(){
+					document.getElementById("note1").innerHTML = " ";
+					}
+				
+				$("button").click(function(){
+				var a = $("#firstnum").val();
+				var b = $("#secnum").val();
+
+				var droplist = $("#ddlopt").val();
+				var ansv;
+
+				if (droplist == "+") {
+
+					ansv = (eval(a)+eval(b));
+
+				}else if(droplist == "-"){
+
+					ansv = parseInt(a) - parseInt(b);
+				
+				}else if(droplist == "/"){
+					
+					ansv = a/b;
+				
+				}else{
+					
+					ansv = a*b;
+				}
+				var dropdowntext = document.getElementById("ddlopt").value;
+				
+				location.href = "#pageanswer";
+
+				document.getElementById("anspara").innerHTML = "Operation: <br> "+a + dropdowntext + b + "<br> Resutls <br>"+ ansv; 	
+
+			});
+				
+		});
+			
+		</script>
+	</head>
+	<body>
+		<div data-role="page" id="pagemain" data-dialog="true" data-theme="a">
+			<div data-role="header">
+				<h1>Simple Calculator</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Home</a>
+						</li>
+						<li>
+							<a href="#pagecal"  data-icon="grid">Calculator</a>
+						</li>
+						<li>
+							<a href="#pagehelp"  data-icon="info">Help</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main">
+				<p>This is a jQuery mobile exercise which provides the user with a calculator for basic mathematical operations.</p>
+			</div>
+
+			<div data-role="footer">
+				<h1>HomeWork</h1>
+			</div>
+		</div>
+
+		<!-- Page two -->
+		<div data-role="page" id="pagecal" data-dialog="true" data-theme="a">
+			<div data-role="header">
+				<h1>Simple Calculator</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#pagemain" data-icon="home">Home</a>
+						</li>
+						<li>
+							<a href="#pagecal"  data-icon="grid" class="ui-btn-active ui-state-persist">Calculator</a>
+						</li>
+						<li>
+							<a href="#pagehelp"  data-icon="info">Help</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main">
+				<label for="firstnum">Number1:</label>
+				<input type="number" name="firstnum" id="firstnum">
+
+				<label for="opt">Select Operator</label>
+				<fieldset class="ui-field-contain">
+					
+					<select name="operator" id="ddlopt">
+						<option value="+" selected="true">+</option>
+						<option value="-">-</option>
+						<option value="/">/</option>
+						<option value="*">*</option>
+						
+						
+					</select>
+				</fieldset>
+
+				<label for="secnum">Number2:</label>
+				<input type="number" name="secnum" id="secnum">
+				
+				<button id="myButton" class="ui-btn">Calculate</button>
+			</div>
+
+			<div data-role="footer">
+				<h1>HomeWork</h1>
+				<div>
+				<p id="note1"></p>
+			</div>
+			</div>
+		</div>
+
+		<!-- Page Three -->
+		<div data-role="page" id="pagehelp" data-dialog="true" data-theme="a">
+			<div data-role="header">
+				<h1>Simple Calculator</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#pagemain" data-icon="home">Home</a>
+						</li>
+						<li>
+							<a href="#pagecal"  data-icon="grid" >Calculator</a>
+						</li>
+						<li>
+							<a href="#pagehelp" class="ui-btn-acive ui-state-persist" data-icon="info">Help</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main">
+				<p>You have requested more information about the app</p>
+				<a href="#" class="ui-btn ui-icon-back ui-btn-icon-left" data-rel="back">Dismiss</a>
+			</div>
+			<div data-role="footer"></div>
+
+			
+		</div>
+
+		<!-- Page Four -->
+		<div data-role="page" id="pageanswer" data-dialog="true" data-theme="a">
+			<div data-role="header">
+				<h1>Results</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#pagemain" data-icon="home">Home</a>
+						</li>
+						<li>
+							<a href="#pagecal"  data-icon="grid" >Calculator</a>
+						</li>
+						<li>
+							<a href="#pagehelp" data-icon="info">Help</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main">
+				<p id="anspara"></p>
+				<a href="#pagecal" class="ui-btn ui-icon-back ui-btn-icon-left" data-rel="back">Back</a>
+			</div>
+			<div data-role="footer">
+				<p>User has clicked on calculate button. Back Button returns to the Calculator operations.</p>
+			</div>
+
+			
+		</div>
+			
+			
+	</body>
+
+</html>
